@@ -11,13 +11,7 @@
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden sm:rounded-lg">
                 <div class="p-4 sm:p-6 bg-white">
-                    {{-- <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi nesciunt consequuntur quas
-                        explicabo
-                        cumque laboriosam eaque recusandae asperiores ad! Quisquam iste maiores, animi mollitia ea saepe
-                        culpa laborum cum. Eius.
-                    </p> --}}
-                    <h1 class="mb-2 text-4xl font-bold text-gray-800 underline capitalize decoration-orange-500 ">
+                    <h1 class="mt-10 sm:mt-0 mb-2 text-4xl font-bold text-gray-800 underline capitalize decoration-orange-500 ">
                         Arif Budiman Arrosyid
                     </h1>
                     {{-- <h1 class="mb-2 text-4xl font-bold text-gray-900 dark:text-gray-100">Arif Budiman Arrosyid</h1>

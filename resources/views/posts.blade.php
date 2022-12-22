@@ -11,7 +11,7 @@
             <div class="bg-white overflow-hidden  sm:rounded-lg">
                 <div class="p-4 sm:p-6 bg-white">
 
-                    <h1 class="text-4xl font-bold text-gray-800 underline capitalize decoration-indigo-500 ">
+                    <h1 class="mt-10 sm:mt-0 text-4xl font-bold text-gray-800 underline capitalize decoration-indigo-500 ">
                         Posts
                     </h1>
                     <h1 class="mt-4 mb-5 text-gray-600 ">Sometimes I write what I have learned, or I will
