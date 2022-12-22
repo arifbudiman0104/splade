@@ -28,7 +28,8 @@
                     {{-- <img src="{{ asset('/storage/thumbnails/'.$post->thumbnail) }}" alt="image"
                         class="object-cover w-full mt-5 h-96"> --}}
                     <div
-                        class="mt-6 overflow-auto prose max-w-none  prose-orange prose-code:text-orange-400 prose-blockquote:text-orange-400">
+                        class="mt-6 overflow-auto prose max-w-none prose-orange prose-code:text-orange-400 prose-blockquote:text-orange-400
+                        prose-img:rounded-lg">
 
                         <p class="lead">Until now, trying to style an article, document, or blog post with Tailwind
                             has been a tedious task that required a keen eye for typography and a lot of complex

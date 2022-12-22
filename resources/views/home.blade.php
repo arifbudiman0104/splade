@@ -37,7 +37,7 @@
                     {{-- <h1 class="mb-2 text-4xl font-bold text-gray-900 dark:text-gray-100">Arif Budiman Arrosyid</h1>
                     --}}
                     <div class="flex flex-col w-full gap-5 ">
-                        <a href="#" class="w-full p-4 bg-gray-50 hover:bg-orange-50 rounded-lg">
+                        <a href="#" class="w-full p-4 bg-orange-50 hover:bg-orange-100 rounded-lg">
 
                             <div class="flex justify-between ">
 
@@ -62,7 +62,7 @@
                                 excerpt Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, culpa.
                             </p>
                         </a>
-                        <a href="#" class="w-full p-4 bg-gray-50 hover:bg-orange-50 rounded-lg">
+                        <a href="#" class="w-full p-4 bg-orange-50 hover:bg-orange-100 rounded-lg">
 
                             <div class="flex justify-between ">
 
@@ -87,7 +87,7 @@
                                 excerpt Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, culpa.
                             </p>
                         </a>
-                        <a href="#" class="w-full p-4 bg-gray-50 hover:bg-orange-50 rounded-lg">
+                        <a href="#" class="w-full p-4 bg-orange-50 hover:bg-orange-100 rounded-lg">
 
                             <div class="flex justify-between ">
 
@@ -112,7 +112,7 @@
                                 excerpt Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, culpa.
                             </p>
                         </a>
-                        <a href="#" class="w-full p-4 bg-gray-50 hover:bg-orange-50 rounded-lg">
+                        <a href="#" class="w-full p-4 bg-orange-50 hover:bg-orange-100 rounded-lg">
 
                             <div class="flex justify-between ">
 
@@ -137,7 +137,7 @@
                                 excerpt Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, culpa.
                             </p>
                         </a>
-                        <a href="#" class="w-full p-4 bg-gray-50 hover:bg-orange-50 rounded-lg">
+                        <a href="#" class="w-full p-4 bg-orange-50 hover:bg-orange-100 rounded-lg">
 
                             <div class="flex justify-between ">
 
@@ -162,7 +162,7 @@
                                 excerpt Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, culpa.
                             </p>
                         </a>
-                        <a href="#" class="w-full p-4 bg-gray-50 hover:bg-orange-50 rounded-lg">
+                        <a href="#" class="w-full p-4 bg-orange-50 hover:bg-orange-100 rounded-lg">
 
                             <div class="flex justify-between ">
 
