@@ -14,23 +14,11 @@
                     <h1 class="text-4xl font-bold text-gray-800 underline capitalize decoration-orange-500 ">
                         Lorem ipsum dolor sit amet.
                     </h1>
-                    {{-- <h1 class="mt-4 mb-5 text-gray-600 ">Sometimes I write what I have learned, or I will
-                        write
-                        whatever I like. Use the search bellow to filter by <span class="text-indigo-500">title</span> /
-                        <span class="text-indigo-500">excerpt</span> / <span class="text-indigo-500">content</span>.
-
-                    </h1> --}}
-                    {{-- <h1 class="mb-2 text-4xl font-bold text-gray-900 dark:text-gray-100">Arif Budiman Arrosyid</h1>
-                    --}}
-
-                    {{-- <h1 class="text-4xl font-bold text-gray-800 underline capitalize decoration-orange-500">
-                        Judul
-                    </h1> --}}
-                    <h5 class="mt-2 mb-5 font-bold tracking-tight text-orange-500">
+                    <h5 class="mt-2 mb-5 font-bold text-orange-500">
                         Category
                     </h5>
                     <span
-                        class="mt-2 bg-gray-200 text-gray-800 text-sm font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 ">
+                        class="mt-2 bg-gray-100 text-gray-800 text-sm font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 ">
                         Published 24 December 2024
                     </span>
                     {{-- @if ($post->thumbnail)
@@ -39,9 +27,6 @@
                     @endif --}}
                     {{-- <img src="{{ asset('/storage/thumbnails/'.$post->thumbnail) }}" alt="image"
                         class="object-cover w-full mt-5 h-96"> --}}
-
-                    {{-- <p class="mt-5 font-normal text-gray-700 dark:text-gray-300">{{ $post->excerpt }}</p> --}}
-
                     <div
                         class="mt-6 overflow-auto prose max-w-none  prose-orange prose-code:text-orange-400 prose-blockquote:text-orange-400">
 

@@ -22,7 +22,7 @@
                     </h1>
                     {{-- <h1 class="mb-2 text-4xl font-bold text-gray-900 dark:text-gray-100">Arif Budiman Arrosyid</h1>
                     --}}
-                    <h1 class="text-gray-900 ">Student | Web Developer</h1>
+                    <h1 class="text-gray-900 font-bold">Student | Web Developer</h1>
                     <h1 class="mt-4 text-gray-600 ">Hi, my name is Arif, I am a Web Developer,
                         currently
                         studying at Muhammadiyah University of Yogyakarta. Interested in Laravel Web Development and
