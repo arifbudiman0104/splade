@@ -20,9 +20,9 @@
                         <x-nav-link :href="route('posts')" :active="request()->routeIs('posts')">
                             {{ __('Posts') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('post')" :active="request()->routeIs('post')">
+                        {{-- <x-nav-link :href="route('post')" :active="request()->routeIs('post')">
                             {{ __('Post') }}
-                        </x-nav-link>
+                        </x-nav-link> --}}
                     </div>
                 </div>
                 @guest
@@ -111,9 +111,9 @@
                 <x-responsive-nav-link :href="route('posts')" :active="request()->routeIs('posts')">
                     {{ __('Posts') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('post')" :active="request()->routeIs('post')">
+                {{-- <x-responsive-nav-link :href="route('post')" :active="request()->routeIs('post')">
                     {{ __('Post') }}
-                </x-responsive-nav-link>
+                </x-responsive-nav-link> --}}
             </div>
             @guest
             <div class="pt-2 pb-3 space-y-1 border-t border-gray-200">

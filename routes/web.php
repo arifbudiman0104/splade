@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,15 +25,19 @@ Route::middleware('splade')->group(function () {
     Route::get('/', function () {
         return view('welcome');
     });
-    Route::get('/home', function () {
-        return view('home');
-    })->name('home');
-    Route::get('/posts', function () {
-        return view('posts');
-    })->name('posts');
-    Route::get('/post', function () {
-        return view('post');
-    })->name('post');
+    // Route::get('/home', function () {
+    //     return view('home');
+    // })->name('home');
+    // Route::get('/posts', function () {
+    //     return view('posts');
+    // })->name('posts');
+    Route::get('/home', [PostController::class, 'home'])->name('home');
+    Route::get('/posts', [PostController::class, 'index'])->name('posts');
+    Route::get('/post/{slug}', [PostController::class, 'show'])->name('post');
+
+    // Route::get('/post', function () {
+    //     return view('post');
+    // })->name('post');
 
     Route::middleware('auth')->group(function () {
         Route::get('/dashboard', function () {

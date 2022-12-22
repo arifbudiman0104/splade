@@ -11,7 +11,8 @@
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden sm:rounded-lg">
                 <div class="p-4 sm:p-6 bg-white">
-                    <h1 class="mt-10 sm:mt-0 mb-2 text-4xl font-bold text-gray-800 underline capitalize decoration-orange-500 ">
+                    <h1
+                        class="mt-10 sm:mt-0 mb-2 text-4xl font-bold text-gray-800 underline capitalize decoration-orange-500 ">
                         Arif Budiman Arrosyid
                     </h1>
                     {{-- <h1 class="mb-2 text-4xl font-bold text-gray-900 dark:text-gray-100">Arif Budiman Arrosyid</h1>
@@ -30,163 +31,45 @@
     <div class="sm:pt-6">
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden sm:rounded-lg">
-                <div class="p-4 sm:p-6 bg-white ">
+                <div class="p-4 sm:p-6 bg-white">
                     <h1 class="mb-5 text-4xl font-bold text-gray-800 underline capitalize decoration-orange-500 ">
                         Featured Posts
                     </h1>
-                    {{-- <h1 class="mb-2 text-4xl font-bold text-gray-900 dark:text-gray-100">Arif Budiman Arrosyid</h1>
-                    --}}
+                    @if ( $featured->count())
+                    <h1 class="mt-4 mb-5 text-gray-600 "> {{ $featured->count() }} latest featured posts.</h1>
+                    @endif
                     <div class="flex flex-col w-full gap-5 ">
-                        <a href="#" class="w-full p-4 bg-orange-50 hover:bg-orange-100 rounded-lg">
+                        @forelse ( $featured as $post)
 
-                            <div class="flex justify-between ">
+                        <Link href="{{ route('post', $post->slug) }}"
+                            class="w-full p-4 bg-orange-50 hover:bg-orange-100 rounded-lg">
+                        <div class="flex justify-between ">
 
-                                <h5 class="font-bold tracking-tight text-gray-400 ">
-                                    Category
-                                </h5>
-                                <span class="inline-flex items-center text-xs font-medium text-gray-400 ">
-                                    <svg aria-hidden="true" class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                    a week ago</p>
-                                </span>
-
-                            </div>
-                            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-500 ">
-                                Judul Posts
+                            <h5 class="font-bold tracking-tight text-gray-400 ">
+                                {{ $post->category->title }}
                             </h5>
-                            <p class="font-normal text-gray-600 ">
-                                excerpt Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, culpa.
-                            </p>
-                        </a>
-                        <a href="#" class="w-full p-4 bg-orange-50 hover:bg-orange-100 rounded-lg">
+                            <span class="inline-flex items-center text-xs font-medium text-gray-400 ">
+                                <svg aria-hidden="true" class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                <p>{{ $post->published_at->diffForHumans()}}</p>
+                            </span>
 
-                            <div class="flex justify-between ">
+                        </div>
+                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-500 ">
+                            {{ $post->title }}
+                        </h5>
+                        <p class="font-normal text-gray-600 ">
+                            {{ $post->excerpt }}
+                        </p>
+                        </Link>
 
-                                <h5 class="font-bold tracking-tight text-gray-400 ">
-                                    Category
-                                </h5>
-                                <span class="inline-flex items-center text-xs font-medium text-gray-400 ">
-                                    <svg aria-hidden="true" class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                    a week ago</p>
-                                </span>
-
-                            </div>
-                            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-500 ">
-                                Judul Posts
-                            </h5>
-                            <p class="font-normal text-gray-600 ">
-                                excerpt Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, culpa.
-                            </p>
-                        </a>
-                        <a href="#" class="w-full p-4 bg-orange-50 hover:bg-orange-100 rounded-lg">
-
-                            <div class="flex justify-between ">
-
-                                <h5 class="font-bold tracking-tight text-gray-400 ">
-                                    Category
-                                </h5>
-                                <span class="inline-flex items-center text-xs font-medium text-gray-400 ">
-                                    <svg aria-hidden="true" class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                    a week ago</p>
-                                </span>
-
-                            </div>
-                            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-500 ">
-                                Judul Posts
-                            </h5>
-                            <p class="font-normal text-gray-600 ">
-                                excerpt Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, culpa.
-                            </p>
-                        </a>
-                        <a href="#" class="w-full p-4 bg-orange-50 hover:bg-orange-100 rounded-lg">
-
-                            <div class="flex justify-between ">
-
-                                <h5 class="font-bold tracking-tight text-gray-400 ">
-                                    Category
-                                </h5>
-                                <span class="inline-flex items-center text-xs font-medium text-gray-400 ">
-                                    <svg aria-hidden="true" class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                    a week ago</p>
-                                </span>
-
-                            </div>
-                            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-500 ">
-                                Judul Posts
-                            </h5>
-                            <p class="font-normal text-gray-600 ">
-                                excerpt Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, culpa.
-                            </p>
-                        </a>
-                        <a href="#" class="w-full p-4 bg-orange-50 hover:bg-orange-100 rounded-lg">
-
-                            <div class="flex justify-between ">
-
-                                <h5 class="font-bold tracking-tight text-gray-400 ">
-                                    Category
-                                </h5>
-                                <span class="inline-flex items-center text-xs font-medium text-gray-400 ">
-                                    <svg aria-hidden="true" class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                    a week ago</p>
-                                </span>
-
-                            </div>
-                            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-500 ">
-                                Judul Posts
-                            </h5>
-                            <p class="font-normal text-gray-600 ">
-                                excerpt Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, culpa.
-                            </p>
-                        </a>
-                        <a href="#" class="w-full p-4 bg-orange-50 hover:bg-orange-100 rounded-lg">
-
-                            <div class="flex justify-between ">
-
-                                <h5 class="font-bold tracking-tight text-gray-400 ">
-                                    Category
-                                </h5>
-                                <span class="inline-flex items-center text-xs font-medium text-gray-400 ">
-                                    <svg aria-hidden="true" class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                    a week ago</p>
-                                </span>
-
-                            </div>
-                            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-500 ">
-                                Judul Posts
-                            </h5>
-                            <p class="font-normal text-gray-600 ">
-                                excerpt Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, culpa.
-                            </p>
-                        </a>
+                        @empty
+                        <h1 class="mt-4 text-gray-600">No post found.</h1>
+                        @endforelse
                     </div>
 
                 </div>
@@ -202,4 +85,6 @@
             </div>
         </div>
     </div> --}}
+    @include('layouts.guest-footer')
+
 </x-guest-layout>
