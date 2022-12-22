@@ -13,17 +13,13 @@
                     </div>
 
                     <!-- Navigation Links -->
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <div class="hidden space-x-4 ml-4 sm:-my-px sm:flex">
                         <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                             {{ __('Home') }}
                         </x-nav-link>
-                    </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-nav-link :href="route('posts')" :active="request()->routeIs('posts')">
                             {{ __('Posts') }}
                         </x-nav-link>
-                    </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-nav-link :href="route('post')" :active="request()->routeIs('post')">
                             {{ __('Post') }}
                         </x-nav-link>
@@ -55,7 +51,7 @@
                     <x-dropdown placement="bottom-end">
                         <x-slot name="trigger">
                             <button
-                                class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-400 transition duration-150 ease-in-out bg-gray-50 border border-gray-100 rounded-md  hover:text-gray-700  focus:outline-none">
+                                class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-400 transition duration-150 ease-in-out bg-gray-100 rounded-md  hover:text-gray-700  focus:outline-none">
                                 <div>{{ Auth::user()->name }}</div>
 
                                 <div class="ml-1">
