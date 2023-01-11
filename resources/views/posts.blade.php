@@ -84,11 +84,11 @@
                             </div>
                         </div>
                         @endforelse
-                        {{ $posts->links() }}
-
                     </div>
-
                 </div>
+            </div>
+            <div class="mt-5">
+                {{ $posts->links() }}
             </div>
         </div>
     </div>
