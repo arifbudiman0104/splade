@@ -12,14 +12,12 @@ class GuestbookController extends Controller
 {
     public function index()
     {
-        $pinned_guestbooks = Guestbook::with('user')
-            ->where('is_pinned', true)
-            // ->orderBy('created_at', 'desc')
+        $pinned_guestbooks = Guestbook::where('is_pinned', true)
+            ->orderBy('created_at', 'asc')
             // ->limit(3)
             ->get();
 
-        $guestbooks = Guestbook::with('user')
-            ->where('is_pinned', false)
+        $guestbooks = Guestbook::where('is_pinned', false)
             ->orderBy('created_at', 'asc')
             ->get();
         return view('guestbook.index', compact('guestbooks', 'pinned_guestbooks'));

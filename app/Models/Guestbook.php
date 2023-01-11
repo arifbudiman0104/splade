@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Guestbook extends Model
 {
     use HasFactory;
+    protected $with = ['user'];
     protected $fillable = [
         'message', 'is_pinned'
     ];
