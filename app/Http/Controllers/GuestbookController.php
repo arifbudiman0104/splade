@@ -20,7 +20,7 @@ class GuestbookController extends Controller
         $guestbooks = Guestbook::where('is_pinned', false)
             ->orderBy('created_at', 'asc')
             ->get();
-        return view('guestbook.index', compact('guestbooks', 'pinned_guestbooks'));
+        return view('guestbook', compact('guestbooks', 'pinned_guestbooks'));
     }
 
     public function create()
