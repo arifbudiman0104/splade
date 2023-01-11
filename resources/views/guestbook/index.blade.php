@@ -9,7 +9,7 @@
 
     <div class="sm:pt-6">
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
-            <div class="overflow-hidden min-h-screen bg-white sm:rounded-lg">
+            <div class="min-h-screen bg-white sm:rounded-lg overflow-hidden">
                 <div class="p-4 bg-white sm:p-6">
                     <h1
                         class="mt-10 mb-2 text-4xl font-bold text-gray-800 underline capitalize sm:mt-0 decoration-sky-500 ">
@@ -105,11 +105,13 @@
                                             </x-dropdown-link>
                                             @endif
                                             <button x-on:click="showDropdown = !showDropdown"
-                                                class="flex w-full px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-white transition duration-150 ease-in-out"
+                                                class="flex w-full px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-50 transition duration-150 ease-in-out"
                                                 x-text="showDropdown ? 'Cancel Edit' : 'Edit'">
                                             </button>
                                             <x-dropdown-link :href="route('guestbook.destroy', $guestbook)"
-                                                method="delete">
+                                                method="delete" confirm confirm="Delete Confirmation"
+                                                confirm-text="Are you sure want to delete your guestbook?"
+                                                confirm-button="Yes, Delete!" cancel-button="No, Cancel!">
                                                 {{ __('Delete') }}
                                             </x-dropdown-link>
                                         </x-slot>
@@ -201,11 +203,20 @@
                                                 {{ __('Pin') }}
                                             </x-dropdown-link>
                                             @endif
+                                            @if ($guestbook->user_id == Auth::id() && Auth::user()->is_admin == false)
+                                            <x-dropdown-link>
+                                                {{ __('Request Pin (Pending Feature)') }}
+                                            </x-dropdown-link>
+                                            @endif
                                             <button x-on:click="showDropdown = !showDropdown"
-                                                class="flex w-full px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-white transition duration-150 ease-in-out"
+                                                class="flex w-full px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-50 transition duration-150 ease-in-out"
                                                 x-text="showDropdown ? 'Cancel Edit' : 'Edit'">
                                             </button>
-                                            <x-dropdown-link :href="route('guestbook.destroy', $guestbook)" method="delete">
+                                            <x-dropdown-link :href="route('guestbook.destroy', $guestbook)"
+                                                method="delete" confirm confirm="Are you sure want to delete your guestbook?"
+                                                confirm-text="{{ $guestbook->message }}"
+                                                confirm-button="Yes, Delete!" cancel-button="No, Cancel!"
+                                                >
                                                 {{ __('Delete') }}
                                             </x-dropdown-link>
                                         </x-slot>

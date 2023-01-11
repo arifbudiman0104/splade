@@ -6,12 +6,12 @@
 >
     <template #default="confirm">
         <x-splade-component is="transition" show="confirm.isOpen">
-            <x-splade-component is="dialog" class="relative z-30" close="confirm.setIsOpen(false)">
+            <x-splade-component is="dialog" class="relative z-40" close="confirm.setIsOpen(false)">
                 <x-splade-component
                     is="transition"
                     child
                     animation="opacity"
-                    class="fixed z-30 inset-0 bg-black/75"
+                    class="fixed z-40 inset-0  backdrop-blur-lg"
                 />
 
                 <div class="fixed z-40 inset-0 overflow-y-auto">
