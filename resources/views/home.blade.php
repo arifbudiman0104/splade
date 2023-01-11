@@ -37,9 +37,9 @@
                     <h1 class="mb-5 text-4xl font-bold text-gray-800 underline capitalize decoration-orange-500 ">
                         Featured Posts
                     </h1>
-                    @if ( $featured->count())
+                    {{-- @if ( $featured->count())
                     <h1 class="mt-4 mb-5 text-gray-600 "> {{ $featured->count() }} latest featured posts.</h1>
-                    @endif
+                    @endif --}}
                     <div class="flex flex-col w-full gap-5 ">
                         @forelse ( $featured as $post)
 
@@ -72,8 +72,18 @@
                         @empty
                         <h1 class="mt-4 text-gray-600">No post found.</h1>
                         @endforelse
+                        <div class="flex">
+                            <Link href="{{ route('posts') }}"
+                                class="flex items-center text-lg text-gray-900 hover:text-orange-500 dark:text-gray-400 dark:hover:text-orange-500">
+                            Read all posts
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6 ml-3">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                            </svg>
+                            </Link>
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
