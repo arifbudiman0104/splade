@@ -15,8 +15,6 @@
                         class="mt-10 mb-2 text-4xl font-bold text-gray-800 underline capitalize sm:mt-0 decoration-sky-500 ">
                         Guestbook
                     </h1>
-                    {{-- <h1 class="mb-2 text-4xl font-bold text-gray-900 dark:text-gray-100">Arif Budiman Arrosyid</h1>
-                    --}}
                     <p class="mt-4 text-gray-600">
                         Hope you enjoy the website, if you have something to say or request, or just say hello, please
                         leave a message.
@@ -52,10 +50,9 @@
                     @endauth
                     @auth
                     <x-splade-form action="{{ route('guestbook.store') }}" class="mt-5 space-y-4">
-                        <!-- Email Address -->
                         <x-splade-textarea id="message" type="text" name="message" :label="__('Message')" required
                             autofocus />
-                        <x-splade-submit class="" :label="__('Send')" />
+                        <x-splade-submit :label="__('Send')" />
                     </x-splade-form>
 
                     @endauth
@@ -81,7 +78,6 @@
                                             <small class="text-sm text-gray-400 sm:ml-2">
                                                 {{ $guestbook->created_at->diffForHumans() }}
                                             </small>
-                                            {{-- @unless ($guestbook->created_at->eq($guestbook->updated_at)) --}}
                                             @unless ($guestbook->created_at == $guestbook->updated_at)
                                             <small class="text-sm text-gray-400"> &middot; {{
                                                 __('edited')
@@ -103,40 +99,17 @@
                                             </button>
                                         </x-slot>
                                         <x-slot name="content">
-
                                             @if (Auth::user()->is_admin)
-                                            {{-- <form method="POST"
-                                                action="{{ route('guestbook.unpin', $guestbook) }}">
-                                                @csrf
-                                                @method('patch')
-                                                <x-dropdown-link :href="route('guestbook.unpin', $guestbook)"
-                                                    onclick="event.preventDefault(); this.closest('form').submit();">
-                                                    {{ __('Unpin') }}
-                                                </x-dropdown-link>
-                                            </form> --}}
-                                            <form method="POST" action="{{ route('guestbook.unpin', $guestbook) }}">
-                                                @csrf
-                                                @method('patch')
-                                                {{-- <x-dropdown-link :href="route('guestbook.unpin', $guestbook)"
-                                                    onclick="event.preventDefault(); this.closest('form').submit();">
-                                                    {{ __('Unpin') }}
-                                                </x-dropdown-link> --}}
-                                                <Link method="patch" href="{{ route('guestbook.unpin', $guestbook) }}" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-white focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
-                                                    {{ __('Unpin') }}
-                                                </Link>
-                                                {{-- <Link class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-white focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">Unpin</Link> --}}
-                                                {{-- <x-splade-submit class="" :label="__('Unpin')"/> --}}
-                                            </form>
+                                            <x-dropdown-link :href="route('guestbook.unpin', $guestbook)" method="patch">
+                                                {{ __('Unpin') }}
+                                            </x-dropdown-link>
                                             @endif
-
                                             <x-dropdown-link :href="route('guestbook.edit', $guestbook)">
                                                 {{ __('Edit') }}
                                             </x-dropdown-link>
-                                            <x-splade-form method="delete" action="{{ route('guestbook.destroy', $guestbook) }}">
-                                                <Link method="delete" href="{{ route('guestbook.destroy', $guestbook) }}" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-white focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
-                                                    {{ __('Delete') }}
-                                                </Link>
-                                            </x-splade-form>
+                                            <x-dropdown-link :href="route('guestbook.destroy', $guestbook)" method="delete">
+                                                {{ __('Delete') }}
+                                            </x-dropdown-link>
                                         </x-slot>
                                     </x-dropdown>
                                     @endif
@@ -182,7 +155,6 @@
                                             <small class="text-sm text-gray-400 sm:ml-2">
                                                 {{ $guestbook->created_at->diffForHumans() }}
                                             </small>
-                                            {{-- @unless ($guestbook->created_at->eq($guestbook->updated_at)) --}}
                                             @unless ($guestbook->created_at == $guestbook->updated_at)
                                             <small class="text-sm text-gray-400"> &middot; {{
                                                 __('edited')
@@ -204,33 +176,17 @@
                                             </button>
                                         </x-slot>
                                         <x-slot name="content">
-                                            @if (Auth::user()->is_admin == true)
-                                            <form method="POST" action="{{ route('guestbook.pin', $guestbook) }}">
-                                                @csrf
-                                                @method('patch')
-                                                {{-- <x-dropdown-link :href="route('guestbook.pin', $guestbook)"
-                                                    onclick="event.preventDefault(); this.closest('form').submit();">
-                                                    {{ __('Pin') }}
-                                                </x-dropdown-link> --}}
-                                                <Link method="patch" href="{{ route('guestbook.pin', $guestbook) }}" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-white focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
-                                                    {{ __('Pin') }}
-                                                </Link>
-                                            </form>
+                                            @if (Auth::user()->is_admin)
+                                            <x-dropdown-link :href="route('guestbook.pin', $guestbook)" method="patch">
+                                                {{ __('Pin') }}
+                                            </x-dropdown-link>
                                             @endif
                                             <x-dropdown-link :href="route('guestbook.edit', $guestbook)">
                                                 {{ __('Edit') }}
                                             </x-dropdown-link>
-                                            <form method="POST" action="{{ route('guestbook.destroy', $guestbook) }}">
-                                                @csrf
-                                                @method('delete')
-                                                {{-- <x-dropdown-link :href="route('guestbook.destroy', $guestbook)"
-                                                    onclick="event.preventDefault(); this.closest('form').submit();">
-                                                    {{ __('Delete') }}
-                                                </x-dropdown-link> --}}
-                                                <Link method="delete" href="{{ route('guestbook.destroy', $guestbook) }}" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-white focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
-                                                    {{ __('Delete') }}
-                                                </Link>
-                                            </form>
+                                            <x-dropdown-link :href="route('guestbook.destroy', $guestbook)" method="delete">
+                                                {{ __('Delete') }}
+                                            </x-dropdown-link>
                                         </x-slot>
                                     </x-dropdown>
                                     @endif
