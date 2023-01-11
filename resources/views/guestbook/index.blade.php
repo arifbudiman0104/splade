@@ -100,7 +100,7 @@
                                         <x-slot name="content">
                                             @if (Auth::user()->is_admin)
                                             <x-dropdown-link :href="route('guestbook.unpin', $guestbook)"
-                                                method="patch">
+                                                method="patch" preserve-scroll>
                                                 {{ __('Unpin') }}
                                             </x-dropdown-link>
                                             @endif
@@ -109,9 +109,10 @@
                                                 x-text="showDropdown ? 'Cancel Edit' : 'Edit'">
                                             </button>
                                             <x-dropdown-link :href="route('guestbook.destroy', $guestbook)"
-                                                method="delete" confirm confirm="Delete Confirmation"
-                                                confirm-text="Are you sure want to delete your guestbook?"
-                                                confirm-button="Yes, Delete!" cancel-button="No, Cancel!">
+                                                method="delete" confirm
+                                                confirm="Are you sure want to delete your guestbook?"
+                                                confirm-text="{{ $guestbook->message }}" confirm-button="Yes, Delete!"
+                                                cancel-button="No, Cancel!" preserve-scroll>
                                                 {{ __('Delete') }}
                                             </x-dropdown-link>
                                         </x-slot>
@@ -199,12 +200,12 @@
                                         </x-slot>
                                         <x-slot name="content">
                                             @if (Auth::user()->is_admin)
-                                            <x-dropdown-link :href="route('guestbook.pin', $guestbook)" method="patch">
+                                            <x-dropdown-link :href="route('guestbook.pin', $guestbook)" method="patch" preserve-scroll>
                                                 {{ __('Pin') }}
                                             </x-dropdown-link>
                                             @endif
                                             @if ($guestbook->user_id == Auth::id() && Auth::user()->is_admin == false)
-                                            <x-dropdown-link>
+                                            <x-dropdown-link preserve-scroll>
                                                 {{ __('Request Pin (Pending Feature)') }}
                                             </x-dropdown-link>
                                             @endif
@@ -213,10 +214,10 @@
                                                 x-text="showDropdown ? 'Cancel Edit' : 'Edit'">
                                             </button>
                                             <x-dropdown-link :href="route('guestbook.destroy', $guestbook)"
-                                                method="delete" confirm confirm="Are you sure want to delete your guestbook?"
-                                                confirm-text="{{ $guestbook->message }}"
-                                                confirm-button="Yes, Delete!" cancel-button="No, Cancel!"
-                                                >
+                                                method="delete" confirm
+                                                confirm="Are you sure want to delete your guestbook?"
+                                                confirm-text="{{ $guestbook->message }}" confirm-button="Yes, Delete!"
+                                                cancel-button="No, Cancel!" preserve-scroll>
                                                 {{ __('Delete') }}
                                             </x-dropdown-link>
                                         </x-slot>
@@ -237,7 +238,7 @@
 
                                         <x-splade-textarea id="message" maxlength="255" type="text" name="message"
                                             :label="__('')" required autofocus rows="4" />
-                                        <x-splade-submit class="" :label="__('Save')" :spinner="false" />
+                                        <x-splade-submit class="" :label="__('Save')" :spinner="false"/>
                                         <button prevent-default
                                             class="rounded-md shadow-sm bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
                                             x-on:click.prevent="showDropdown = !showDropdown">

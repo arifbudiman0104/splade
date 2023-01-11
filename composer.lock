@@ -2181,16 +2181,16 @@
         },
         {
             "name": "protonemedia/laravel-splade",
-            "version": "1.1.0",
+            "version": "1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/protonemedia/laravel-splade.git",
-                "reference": "7aff4ea5867bf96bd306746ecaa85eaee2d64f0d"
+                "reference": "bead2c9b544d08008da615ae4717ba44d4c808ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/protonemedia/laravel-splade/zipball/7aff4ea5867bf96bd306746ecaa85eaee2d64f0d",
-                "reference": "7aff4ea5867bf96bd306746ecaa85eaee2d64f0d",
+                "url": "https://api.github.com/repos/protonemedia/laravel-splade/zipball/bead2c9b544d08008da615ae4717ba44d4c808ac",
+                "reference": "bead2c9b544d08008da615ae4717ba44d4c808ac",
                 "shasum": ""
             },
             "require": {
@@ -2204,6 +2204,7 @@
                 "laravel/pint": "^1.0",
                 "nunomaduro/collision": "^6.0",
                 "nunomaduro/larastan": "^2.0.1",
+                "orchestra/testbench": "^7.16",
                 "phpunit/phpunit": "^9.5"
             },
             "suggest": {
@@ -2249,7 +2250,7 @@
             ],
             "support": {
                 "issues": "https://github.com/protonemedia/laravel-splade/issues",
-                "source": "https://github.com/protonemedia/laravel-splade/tree/1.1.0"
+                "source": "https://github.com/protonemedia/laravel-splade/tree/1.1.5"
             },
             "funding": [
                 {
@@ -2257,7 +2258,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-12-08T09:04:45+00:00"
+            "time": "2023-01-09T21:15:46+00:00"
         },
         {
             "name": "protonemedia/laravel-splade-breeze",
