@@ -70,7 +70,17 @@
                         </Link>
 
                         @empty
-                        <h1 class="mt-4 text-gray-600">No post found.</h1>
+                        <div class="flex p-4 divide-y-2 divide-white rounded-lg bg-gray-50  ">
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex flex-col sm:flex-row">
+                                        <p class="text-base font-normal text-gray-400">
+                                            No post found.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         @endforelse
                         <div class="flex">
                             <Link href="{{ route('posts') }}"
