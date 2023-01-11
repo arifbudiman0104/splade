@@ -104,12 +104,9 @@
                                                 {{ __('Unpin') }}
                                             </x-dropdown-link>
                                             @endif
-                                            {{-- <x-dropdown-link :href="route('guestbook.edit', $guestbook)">
-                                                {{ __('Edit') }}
-                                            </x-dropdown-link> --}}
                                             <button x-on:click="showDropdown = !showDropdown"
-                                                class="flex w-full px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-white focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
-                                                {{ __('Edit') }}
+                                                class="flex w-full px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-white transition duration-150 ease-in-out"
+                                                x-text="showDropdown ? 'Cancel Edit' : 'Edit'">
                                             </button>
                                             <x-dropdown-link :href="route('guestbook.destroy', $guestbook)"
                                                 method="delete">
@@ -204,12 +201,9 @@
                                                 {{ __('Pin') }}
                                             </x-dropdown-link>
                                             @endif
-                                            {{-- <x-dropdown-link :href="route('guestbook.edit', $guestbook)">
-                                                {{ __('Edit') }}
-                                            </x-dropdown-link> --}}
                                             <button x-on:click="showDropdown = !showDropdown"
-                                                class="flex w-full px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-white focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
-                                                {{ __('Edit') }}
+                                                class="flex w-full px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-white transition duration-150 ease-in-out"
+                                                x-text="showDropdown ? 'Cancel Edit' : 'Edit'">
                                             </button>
                                             <x-dropdown-link :href="route('guestbook.destroy', $guestbook)"
                                                 method="delete">
