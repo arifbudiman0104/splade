@@ -87,7 +87,7 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-5">
+            <div class="rounded-lg sm:mt-5 p-4 bg-white sm:p-6">
                 {{ $posts->links() }}
             </div>
         </div>
