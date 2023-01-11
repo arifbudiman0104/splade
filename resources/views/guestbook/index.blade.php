@@ -49,7 +49,7 @@
                     </p>
                     @endauth
                     @auth
-                    <x-splade-form action="{{ route('guestbook.store') }}" class="mt-5 space-y-4">
+                    <x-splade-form action="{{ route('guestbook.store') }}" class="mt-5 space-y-4" preserve-scroll>
                         <x-splade-textarea id="message" maxlength="255"
                             placeholder="Your message here... (max length 255)" type="text" name="message"
                             :label="__('Message')" required rows="4" autofocus />
@@ -99,8 +99,8 @@
                                         </x-slot>
                                         <x-slot name="content">
                                             @if (Auth::user()->is_admin)
-                                            <x-dropdown-link :href="route('guestbook.unpin', $guestbook)"
-                                                method="patch" preserve-scroll>
+                                            <x-dropdown-link :href="route('guestbook.unpin', $guestbook)" method="patch"
+                                                preserve-scroll>
                                                 {{ __('Unpin') }}
                                             </x-dropdown-link>
                                             @endif
@@ -128,8 +128,7 @@
                                 <div x-cloak x-show="showDropdown">
                                     <x-splade-form :default="$guestbook"
                                         action="{{ route('guestbook.update', $guestbook) }}" method="PATCH"
-                                        class="mt-5 space-y-4">
-
+                                        class="mt-5 space-y-4" preserve-scroll>
                                         <x-splade-textarea id="message" maxlength="255" type="text" name="message"
                                             :label="__('')" required autofocus rows="4" />
                                         <x-splade-submit class="" :label="__('Save')" :spinner="false" />
@@ -200,7 +199,8 @@
                                         </x-slot>
                                         <x-slot name="content">
                                             @if (Auth::user()->is_admin)
-                                            <x-dropdown-link :href="route('guestbook.pin', $guestbook)" method="patch" preserve-scroll>
+                                            <x-dropdown-link :href="route('guestbook.pin', $guestbook)" method="patch"
+                                                preserve-scroll>
                                                 {{ __('Pin') }}
                                             </x-dropdown-link>
                                             @endif
@@ -234,11 +234,10 @@
                                 <div x-cloak x-show="showDropdown">
                                     <x-splade-form :default="$guestbook"
                                         action="{{ route('guestbook.update', $guestbook) }}" method="PATCH"
-                                        class="mt-5 space-y-4">
-
+                                        class="mt-5 space-y-4" preserve-scroll>
                                         <x-splade-textarea id="message" maxlength="255" type="text" name="message"
                                             :label="__('')" required autofocus rows="4" />
-                                        <x-splade-submit class="" :label="__('Save')" :spinner="false"/>
+                                        <x-splade-submit class="" :label="__('Save')" :spinner="false" />
                                         <button prevent-default
                                             class="rounded-md shadow-sm bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
                                             x-on:click.prevent="showDropdown = !showDropdown">
