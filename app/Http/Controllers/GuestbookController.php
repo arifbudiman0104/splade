@@ -38,7 +38,7 @@ class GuestbookController extends Controller
 
         $request->user()->guestbook()->create($validated);
 
-        Splade::toast('Guestbook created successfully.')->autoDismiss(5)->rightTop()->success();
+        Splade::toast('Guestbook created successfully.')->autoDismiss(5)->rightBottom()->success();
 
         return redirect(route('guestbook.index'));
     }
@@ -54,9 +54,11 @@ class GuestbookController extends Controller
             if (Auth::user()->id == $guestbook->user_id || Auth::user()->is_admin == true) {
                 return view('guestbook.edit', compact('guestbook'));
             } else {
+                Splade::toast('You are not authorized to edit this guestbook.')->autoDismiss(5)->rightBottom()->warning();
                 return redirect()->route('guestbook.index');
             }
         } else {
+            Splade::toast('You need to login to edit guestbook.')->autoDismiss(5)->rightBottom()->warning();
             return redirect()->route('guestbook.index');
         }
     }
@@ -69,7 +71,7 @@ class GuestbookController extends Controller
 
         $guestbook->update($validated);
 
-        Splade::toast('Guestbook edited successfully.')->autoDismiss(5)->rightTop()->success();
+        Splade::toast('Guestbook edited successfully.')->autoDismiss(5)->rightBottom()->success();
 
         return redirect(route('guestbook.index'));
     }
@@ -79,14 +81,14 @@ class GuestbookController extends Controller
         if (Auth::check()) {
             if (Auth::user()->id == $guestbook->user_id || Auth::user()->is_admin == true) {
                 $guestbook->delete();
-                Splade::toast('Guestbook deleted successfully.')->autoDismiss(5)->rightTop()->success();
+                Splade::toast('Guestbook deleted successfully.')->autoDismiss(5)->rightBottom()->success();
                 return redirect()->route('guestbook.index');
             } else {
-                Splade::toast('Guestbook delete failed.')->autoDismiss(5)->rightTop()->danger();
+                Splade::toast('Guestbook delete failed.')->autoDismiss(5)->rightBottom()->danger();
                 return redirect()->route('guestbook.index');
             }
         } else {
-            Splade::toast('Guestbook delete failed.')->autoDismiss(5)->rightTop()->danger();
+            Splade::toast('Guestbook delete failed.')->autoDismiss(5)->rightBottom()->danger();
             return redirect()->route('guestbook.index');
         }
     }
@@ -97,14 +99,14 @@ class GuestbookController extends Controller
                 $guestbook->is_pinned = true;
                 $guestbook->save();
                 // dd($guestbook);
-                Splade::toast('Guestbook pined successfully.')->autoDismiss(5)->rightTop()->success();
+                Splade::toast('Guestbook pined successfully.')->autoDismiss(5)->rightBottom()->success();
                 return redirect()->route('guestbook.index');
             } else {
-                Splade::toast('Guestbook pin failed.')->autoDismiss(5)->rightTop()->danger();
+                Splade::toast('Guestbook pin failed.')->autoDismiss(5)->rightBottom()->danger();
                 return redirect()->route('guestbook.index');
             }
         } else {
-            Splade::toast('Guestbook pin failed.')->autoDismiss(5)->rightTop()->danger();
+            Splade::toast('Guestbook pin failed.')->autoDismiss(5)->rightBottom()->danger();
             return redirect()->route('guestbook.index');
         }
     }
@@ -116,14 +118,14 @@ class GuestbookController extends Controller
                 $guestbook->is_pinned = false;
                 $guestbook->save();
                 // dd($guestbook);
-                Splade::toast('Guestbook unpined successfully.')->autoDismiss(5)->rightTop()->success();
+                Splade::toast('Guestbook unpined successfully.')->autoDismiss(5)->rightBottom()->success();
                 return Redirect::route('guestbook.index');
             } else {
-                Splade::toast('Guestbook unpin failed.')->autoDismiss(5)->rightTop()->danger();
+                Splade::toast('Guestbook unpin failed.')->autoDismiss(5)->rightBottom()->danger();
                 return redirect()->route('guestbook.index');
             }
         } else {
-            Splade::toast('Guestbook unpin failed.')->autoDismiss(5)->rightTop()->danger();
+            Splade::toast('Guestbook unpin failed.')->autoDismiss(5)->rightBottom()->danger();
             return redirect()->route('guestbook.index');
         }
     }
