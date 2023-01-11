@@ -20,8 +20,14 @@
                         <x-nav-link :href="route('posts')" :active="request()->routeIs('posts')">
                             {{ __('Posts') }}
                         </x-nav-link>
-                        {{-- <x-nav-link :href="route('post')" :active="request()->routeIs('post')">
-                            {{ __('Post') }}
+                        <x-nav-link :href="route('portofolio')" :active="request()->routeIs('portofolio')">
+                            {{ __('Portofolio') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('guestbook.index')" :active="request()->routeIs('guestbook.index')">
+                            {{ __('Guestbook') }}
+                        </x-nav-link>
+                        {{-- <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
+                            {{ __('About') }}
                         </x-nav-link> --}}
                     </div>
                 </div>
@@ -110,6 +116,12 @@
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('posts')" :active="request()->routeIs('posts')">
                     {{ __('Posts') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('portofolio')" :active="request()->routeIs('portofolio')">
+                    {{ __('Portofolio') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('guestbook.index')" :active="request()->routeIs('guestbook.index')">
+                    {{ __('Guestbook') }}
                 </x-responsive-nav-link>
                 {{-- <x-responsive-nav-link :href="route('post')" :active="request()->routeIs('post')">
                     {{ __('Post') }}

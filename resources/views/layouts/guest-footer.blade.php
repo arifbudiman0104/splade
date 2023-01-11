@@ -3,19 +3,20 @@
         <div class="bg-white overflow-hidden sm:rounded-lg">
             <div class="p-4 sm:p-6 bg-white">
                 <div class="">
+                    <p class="font-bold text-lg mb-5">Arif<span class="text-indigo-500">Code</span></p>
                     <div class="grid grid-cols-1 gap-8 sm:gap-6 sm:grid-cols-3">
                         <div>
                             <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Website
                             </h2>
                             <ul class="text-gray-600">
                                 <li class="mb-4">
-                                    <a href="/" class="hover:underline">Home</a>
+                                    <Link href="{{ route('home') }}" class="hover:underline">Home</Link>
                                 </li>
                                 <li class="mb-4">
-                                    <a href="/" class="hover:underline">Gear</a>
+                                    <Link href="{{ route('gear') }}" class="hover:underline">Gear</Link>
                                 </li>
                                 <li class="mb-4">
-                                    <a href="/" class="hover:underline">About Me</a>
+                                    <Link href="{{ route('about') }}" class="hover:underline">About Me</Link>
                                 </li>
                                 {{-- <li>
                                     <a href="https://tailwindcss.com/" class="hover:underline">Tailwind CSS</a>
@@ -26,9 +27,9 @@
                             <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Follow us
                             </h2>
                             <ul class="text-gray-600">
-                                <li class="mb-4">
-                                    <a href="https://github.com/arifbudimanarrosyid" class="hover:underline">Github</a>
-                                </li>
+                                <a class="mb-4">
+                                    <a href="https://github.com/arifbudimanarrosyid" target="_blank" class="hover:underline">Github</a>
+                                </a>
                                 {{-- <li>
                                     <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">Discord</a>
                                 </li> --}}
@@ -39,7 +40,7 @@
                             </h2>
                             <ul class="text-gray-600">
                                 <li class="mb-4">
-                                    <a href="https://github.com/arifbudimanarrosyid/Obsidian" class="hover:underline">Obsidian</a>
+                                    <a href="https://github.com/arifbudimanarrosyid/Obsidian" target="_blank" class="hover:underline">Obsidian</a>
                                 </li>
                                 {{-- <li>
                                     <a href="#" class="hover:underline">Terms &amp; Conditions</a>

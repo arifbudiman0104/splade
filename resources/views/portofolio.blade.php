@@ -12,25 +12,26 @@
             <div class="bg-white overflow-hidden sm:rounded-lg">
                 <div class="p-4 sm:p-6 bg-white">
                     <h1
-                        class="mt-10 sm:mt-0 mb-2 text-4xl font-bold text-gray-800 underline capitalize decoration-orange-500 ">
-                        Arif Budiman Arrosyid
+                        class="mt-10 sm:mt-0 mb-2 text-4xl font-bold text-gray-800 underline capitalize decoration-red-500 ">
+                        Portofolio
                     </h1>
                     {{-- <h1 class="mb-2 text-4xl font-bold text-gray-900 dark:text-gray-100">Arif Budiman Arrosyid</h1>
                     --}}
-                    <h1 class="text-gray-900 font-bold">Student | Web Developer</h1>
-                    <h1 class="mt-4 text-gray-600 ">Hi, my name is Arif, I am a Web Developer,
+                    <p class="mt-4 text-gray-500">
+                        The following are projects that I have worked on or are currently working on
+                    </p>
+                    {{-- <h1 class="text-gray-900 font-bold">Student | Web Developer</h1> --}}
+                    {{-- <h1 class="mt-4 text-gray-600 ">Hi, my name is Arif, I am a Web Developer,
                         currently
                         studying at Muhammadiyah University of Yogyakarta. Interested in Laravel Web Development and
-                        Tailwind CSS. You can see more about me
-                        <Link href="{{ route('about') }}" class="text-orange-500">here</Link>.
-                    </h1>
+                        Tailwind CSS.</h1> --}}
                 </div>
 
 
             </div>
         </div>
     </div>
-    <div class="sm:pt-6">
+    {{-- <div class="sm:pt-6">
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden sm:rounded-lg">
                 <div class="p-4 sm:p-6 bg-white">
@@ -77,7 +78,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     {{-- <div class="sm:pt-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
