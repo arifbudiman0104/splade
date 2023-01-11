@@ -50,16 +50,15 @@
                     @endauth
                     @auth
                     <x-splade-form action="{{ route('guestbook.store') }}" class="mt-5 space-y-4">
-                        <x-splade-textarea id="message" type="text" name="message" :label="__('Message')" required
-                            autofocus />
+                        <x-splade-textarea id="message" maxlength="255"
+                            placeholder="Your message here... (max length 255)" type="text" name="message"
+                            :label="__('Message')" required rows="4" autofocus />
                         <x-splade-submit :label="__('Send')" />
                     </x-splade-form>
-
                     @endauth
                     <div class="mt-4 divide-y-2 divide-white rounded-lg bg-sky-50 ">
-
                         @forelse ($pinned_guestbooks as $guestbook)
-                        <div class="flex p-4 ">
+                        <div class="flex p-4" x-data="{ showDropdown: false }">
                             <div class="flex-1">
                                 <div class="flex items-center justify-between">
                                     <div class="flex flex-col sm:flex-row">
@@ -100,14 +99,20 @@
                                         </x-slot>
                                         <x-slot name="content">
                                             @if (Auth::user()->is_admin)
-                                            <x-dropdown-link :href="route('guestbook.unpin', $guestbook)" method="patch">
+                                            <x-dropdown-link :href="route('guestbook.unpin', $guestbook)"
+                                                method="patch">
                                                 {{ __('Unpin') }}
                                             </x-dropdown-link>
                                             @endif
-                                            <x-dropdown-link :href="route('guestbook.edit', $guestbook)">
+                                            {{-- <x-dropdown-link :href="route('guestbook.edit', $guestbook)">
                                                 {{ __('Edit') }}
-                                            </x-dropdown-link>
-                                            <x-dropdown-link :href="route('guestbook.destroy', $guestbook)" method="delete">
+                                            </x-dropdown-link> --}}
+                                            <button x-on:click="showDropdown = !showDropdown"
+                                                class="flex w-full px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-white focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
+                                                {{ __('Edit') }}
+                                            </button>
+                                            <x-dropdown-link :href="route('guestbook.destroy', $guestbook)"
+                                                method="delete">
                                                 {{ __('Delete') }}
                                             </x-dropdown-link>
                                         </x-slot>
@@ -118,6 +123,25 @@
                                 <p class="mt-2 text-gray-600 text-notmal">{{
                                     $guestbook->message }}
                                 </p>
+                                @auth
+                                @if ($guestbook->user_id == Auth::id() || Auth::user()->is_admin == true)
+                                <div x-cloak x-show="showDropdown">
+                                    <x-splade-form :default="$guestbook"
+                                        action="{{ route('guestbook.update', $guestbook) }}" method="PATCH"
+                                        class="mt-5 space-y-4">
+
+                                        <x-splade-textarea id="message" maxlength="255" type="text" name="message"
+                                            :label="__('')" required autofocus rows="4" />
+                                        <x-splade-submit class="" :label="__('Save')" :spinner="false" />
+                                        <button prevent-default
+                                            class="rounded-md shadow-sm bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
+                                            x-on:click.prevent="showDropdown = !showDropdown">
+                                            Cancel
+                                        </button>
+                                    </x-splade-form>
+                                </div>
+                                @endif
+                                @endauth
                             </div>
                         </div>
                         @empty
@@ -136,7 +160,7 @@
                     </div>
                     <div class="mt-4 divide-y-2 divide-white rounded-lg bg-gray-50 ">
                         @forelse ($guestbooks as $guestbook)
-                        <div class="flex p-4 ">
+                        <div class="flex p-4" x-data="{ showDropdown: false }">
                             <div class="flex-1">
                                 <div class="flex items-center justify-between">
                                     <div class="flex flex-col sm:flex-row">
@@ -162,7 +186,6 @@
                                             @endunless
                                         </div>
                                     </div>
-
                                     @auth
                                     @if ($guestbook->user_id == Auth::id() || Auth::user()->is_admin == true)
                                     <x-dropdown>
@@ -181,10 +204,15 @@
                                                 {{ __('Pin') }}
                                             </x-dropdown-link>
                                             @endif
-                                            <x-dropdown-link :href="route('guestbook.edit', $guestbook)">
+                                            {{-- <x-dropdown-link :href="route('guestbook.edit', $guestbook)">
                                                 {{ __('Edit') }}
-                                            </x-dropdown-link>
-                                            <x-dropdown-link :href="route('guestbook.destroy', $guestbook)" method="delete">
+                                            </x-dropdown-link> --}}
+                                            <button x-on:click="showDropdown = !showDropdown"
+                                                class="flex w-full px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-white focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
+                                                {{ __('Edit') }}
+                                            </button>
+                                            <x-dropdown-link :href="route('guestbook.destroy', $guestbook)"
+                                                method="delete">
                                                 {{ __('Delete') }}
                                             </x-dropdown-link>
                                         </x-slot>
@@ -195,6 +223,26 @@
                                 <p class="mt-2 text-gray-600 text-notmal">{{
                                     $guestbook->message }}
                                 </p>
+
+                                @auth
+                                @if ($guestbook->user_id == Auth::id() || Auth::user()->is_admin == true)
+                                <div x-cloak x-show="showDropdown">
+                                    <x-splade-form :default="$guestbook"
+                                        action="{{ route('guestbook.update', $guestbook) }}" method="PATCH"
+                                        class="mt-5 space-y-4">
+
+                                        <x-splade-textarea id="message" maxlength="255" type="text" name="message"
+                                            :label="__('')" required autofocus rows="4" />
+                                        <x-splade-submit class="" :label="__('Save')" :spinner="false" />
+                                        <button prevent-default
+                                            class="rounded-md shadow-sm bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
+                                            x-on:click.prevent="showDropdown = !showDropdown">
+                                            Cancel
+                                        </button>
+                                    </x-splade-form>
+                                </div>
+                                @endif
+                                @endauth
                             </div>
                         </div>
                         @empty
@@ -212,67 +260,7 @@
                         @endforelse
                     </div>
                 </div>
-
-
-
             </div>
         </div>
     </div>
-    {{-- <div class="sm:pt-6">
-        <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
-            <div class="overflow-hidden bg-white sm:rounded-lg">
-                <div class="p-4 bg-white sm:p-6">
-                    <h1 class="mb-5 text-4xl font-bold text-gray-800 underline capitalize decoration-orange-500 ">
-                        Featured Posts
-                    </h1>
-                    @if ( $featured->count())
-                    <h1 class="mt-4 mb-5 text-gray-600 "> {{ $featured->count() }} latest featured posts.</h1>
-                    @endif
-                    <div class="flex flex-col w-full gap-5 ">
-                        @forelse ( $featured as $post)
-
-                        <Link href="{{ route('post', $post->slug) }}"
-                            class="w-full p-4 rounded-lg bg-orange-50 hover:bg-orange-100">
-                        <div class="flex justify-between ">
-
-                            <h5 class="font-bold tracking-tight text-gray-400 ">
-                                {{ $post->category->title }}
-                            </h5>
-                            <span class="inline-flex items-center text-xs font-medium text-gray-400 ">
-                                <svg aria-hidden="true" class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <p>{{ $post->published_at->diffForHumans()}}</p>
-                            </span>
-
-                        </div>
-                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-500 ">
-                            {{ $post->title }}
-                        </h5>
-                        <p class="font-normal text-gray-600 ">
-                            {{ $post->excerpt }}
-                        </p>
-                        </Link>
-
-                        @empty
-                        <h1 class="mt-4 text-gray-600">No post found.</h1>
-                        @endforelse
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    {{-- <div class="sm:pt-6">
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, tempore.
-                </div>
-            </div>
-        </div>
-    </div> --}}
 </x-guest-layout>

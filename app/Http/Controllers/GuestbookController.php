@@ -48,32 +48,53 @@ class GuestbookController extends Controller
         //
     }
 
-    public function edit(Guestbook $guestbook)
-    {
-        if (Auth::check()) {
-            if (Auth::user()->id == $guestbook->user_id || Auth::user()->is_admin == true) {
-                return view('guestbook.edit', compact('guestbook'));
-            } else {
-                Splade::toast('You are not authorized to edit this guestbook.')->autoDismiss(5)->rightBottom()->warning();
-                return redirect()->route('guestbook.index');
-            }
-        } else {
-            Splade::toast('You need to login to edit guestbook.')->autoDismiss(5)->rightBottom()->warning();
-            return redirect()->route('guestbook.index');
-        }
-    }
+    // public function edit(Guestbook $guestbook)
+    // {
+    //     if (Auth::check()) {
+    //         if (Auth::user()->id == $guestbook->user_id || Auth::user()->is_admin == true) {
+    //             return view('guestbook.edit', compact('guestbook'));
+    //         } else {
+    //             Splade::toast('You are not authorized to edit this guestbook.')->autoDismiss(5)->rightBottom()->warning();
+    //             return redirect()->route('guestbook.index');
+    //         }
+    //     } else {
+    //         Splade::toast('You need to login to edit guestbook.')->autoDismiss(5)->rightBottom()->warning();
+    //         return redirect()->route('guestbook.index');
+    //     }
+    // }
 
     public function update(Request $request, Guestbook $guestbook)
     {
-        $validated = $request->validate([
-            'message' => 'required|string|max:255',
-        ]);
+        if (Auth::check()) {
+            if (Auth::user()->id == $guestbook->user_id) {
+                $request->validate([
+                    'message' => 'required|string|max:255',
+                ]);
 
-        $guestbook->update($validated);
+                $guestbook->message = $request->message;
+                $guestbook->save();
 
-        Splade::toast('Guestbook edited successfully.')->autoDismiss(5)->rightBottom()->success();
+                Splade::toast('Guestbook edited successfully.')->autoDismiss(5)->rightBottom()->success();
+                return redirect(route('guestbook.index'));
+            } elseif (auth()->user()->is_admin == true) {
+                $request->validate([
+                    'message' => 'required|string|max:255',
+                ]);
 
-        return redirect(route('guestbook.index'));
+                $guestbook->timestamps = false;
+                $guestbook->message = $request->message;
+                $guestbook->save();
+
+                Splade::toast('Guestbook updated successfully as Admin.')->autoDismiss(5)->rightBottom()->success();
+                return redirect(route('guestbook.index'));
+            } else {
+                Splade::toast('You are not authorized to edit this guestbook.')->autoDismiss(5)->rightBottom()->danger();
+                return back();
+            }
+        } else {
+            Splade::toast('You are not authorized to edit this guestbook.')->autoDismiss(5)->rightBottom()->danger();
+            return back();
+        }
     }
 
     public function destroy(Guestbook $guestbook)
@@ -82,31 +103,33 @@ class GuestbookController extends Controller
             if (Auth::user()->id == $guestbook->user_id || Auth::user()->is_admin == true) {
                 $guestbook->delete();
                 Splade::toast('Guestbook deleted successfully.')->autoDismiss(5)->rightBottom()->success();
-                return redirect()->route('guestbook.index');
+                return redirect()->route('guestbook.index')->with('success', 'Guestbook deleted successfully.');
             } else {
-                Splade::toast('Guestbook delete failed.')->autoDismiss(5)->rightBottom()->danger();
+                Splade::toast('You are not authorized to delete this guestbook.')->autoDismiss(5)->rightBottom()->danger();
                 return redirect()->route('guestbook.index');
             }
         } else {
-            Splade::toast('Guestbook delete failed.')->autoDismiss(5)->rightBottom()->danger();
+            Splade::toast('You are not authorized to delete this guestbook.')->autoDismiss(5)->rightBottom()->danger();
             return redirect()->route('guestbook.index');
         }
     }
+
     public function pin(Guestbook $guestbook)
     {
         if (Auth::check()) {
             if (Auth::user()->is_admin == true) {
+                $guestbook->timestamps = false;
                 $guestbook->is_pinned = true;
                 $guestbook->save();
                 // dd($guestbook);
                 Splade::toast('Guestbook pined successfully.')->autoDismiss(5)->rightBottom()->success();
                 return redirect()->route('guestbook.index');
             } else {
-                Splade::toast('Guestbook pin failed.')->autoDismiss(5)->rightBottom()->danger();
+                Splade::toast('You are not authorized to pin guestbook.')->autoDismiss(5)->rightBottom()->danger();
                 return redirect()->route('guestbook.index');
             }
         } else {
-            Splade::toast('Guestbook pin failed.')->autoDismiss(5)->rightBottom()->danger();
+            Splade::toast('You are not authorized to pin guestbook.')->autoDismiss(5)->rightBottom()->danger();
             return redirect()->route('guestbook.index');
         }
     }
@@ -115,18 +138,20 @@ class GuestbookController extends Controller
     {
         if (Auth::check()) {
             if (Auth::user()->is_admin == true) {
+                $guestbook->timestamps = false;
                 $guestbook->is_pinned = false;
                 $guestbook->save();
                 // dd($guestbook);
-                Splade::toast('Guestbook unpined successfully.')->autoDismiss(5)->rightBottom()->success();
-                return Redirect::route('guestbook.index');
+                Splade::toast('Guestbook unpinned successfully.')->autoDismiss(5)->rightBottom()->success();
+                return redirect()->route('guestbook.index');
             } else {
-                Splade::toast('Guestbook unpin failed.')->autoDismiss(5)->rightBottom()->danger();
+                Splade::toast('You are not authorized to unpin guestbook.')->autoDismiss(5)->rightBottom()->danger();
                 return redirect()->route('guestbook.index');
             }
         } else {
-            Splade::toast('Guestbook unpin failed.')->autoDismiss(5)->rightBottom()->danger();
+            Splade::toast('You are not authorized to unpin guestbook.')->autoDismiss(5)->rightBottom()->danger();
             return redirect()->route('guestbook.index');
         }
     }
+
 }
