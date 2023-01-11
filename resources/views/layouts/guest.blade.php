@@ -11,5 +11,6 @@
     <!-- Page Content -->
     <main class="sm:pb-5">
         {{ $slot }}
+        @include('layouts.guest-footer')
     </main>
 </div>

@@ -9,7 +9,7 @@
 
     <div class="sm:pt-6">
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden sm:rounded-lg">
+            <div class="bg-white overflow-hidden min-h-screen sm:rounded-lg">
                 <div class="p-4 sm:p-6 bg-white">
                     <h1
                         class="mt-10 sm:mt-0 mb-2 text-4xl font-bold text-gray-800 underline capitalize decoration-sky-500 ">
@@ -59,16 +59,8 @@
                         <x-splade-submit class="" :label="__('Send')" />
                     </x-splade-form>
                     @endauth
-
-
                 </div>
-
-
-
             </div>
         </div>
     </div>
-
-    @include('layouts.guest-footer')
-
 </x-guest-layout>

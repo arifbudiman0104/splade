@@ -9,7 +9,7 @@
 
     <div class="sm:pt-6">
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
-            <div class="overflow-hidden bg-white sm:rounded-lg">
+            <div class="overflow-hidden min-h-screen bg-white sm:rounded-lg">
                 <div class="p-4 bg-white sm:p-6">
                     <h1
                         class="mt-10 mb-2 text-4xl font-bold text-gray-800 underline capitalize sm:mt-0 decoration-sky-500 ">
@@ -68,11 +68,11 @@
                                     <div class="flex flex-col sm:flex-row">
                                         <div>
                                             @if ($guestbook->user_id == Auth::id())
-                                            <span class="text-base text-yellow-500">
+                                            <span class="text-base font-bold text-sky-500">
                                                 {{$guestbook->user->name }}
                                             </span>
                                             @else
-                                            <span class="text-base text-sky-500">
+                                            <span class="text-base font-bold text-gray-500">
                                                 {{$guestbook->user->name }}
                                             </span>
                                             @endif
@@ -169,11 +169,11 @@
                                     <div class="flex flex-col sm:flex-row">
                                         <div>
                                             @if ($guestbook->user_id == Auth::id())
-                                            <span class="text-base text-yellow-500">
+                                            <span class="text-base font-bold text-sky-500">
                                                 {{$guestbook->user->name }}
                                             </span>
                                             @else
-                                            <span class="text-base text-sky-500">
+                                            <span class="text-base font-bold text-gray-500">
                                                 {{$guestbook->user->name }}
                                             </span>
                                             @endif
@@ -319,6 +319,4 @@
             </div>
         </div>
     </div> --}}
-    @include('layouts.guest-footer')
-
 </x-guest-layout>

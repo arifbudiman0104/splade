@@ -8,7 +8,7 @@
     </header> --}}
     <div class="sm:pt-6">
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
-            <div class="overflow-hidden bg-white sm:rounded-lg">
+            <div class="overflow-hidden min-h-screen bg-white sm:rounded-lg">
                 <div class="p-4 bg-white sm:p-6">
 
                     <h1
@@ -90,5 +90,4 @@
         </div>
     </div>
 
-    @include('layouts.guest-footer')
 </x-guest-layout>
