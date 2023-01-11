@@ -42,6 +42,9 @@ Route::middleware('splade')->group(function () {
     Route::get('/', [PostController::class, 'home'])->name('home');
     Route::get('/posts', [PostController::class, 'index'])->name('posts');
     Route::get('/post/{slug}', [PostController::class, 'show'])->name('post');
+    // Route::post('/posts', [PostController::class, 'search'])->name('search');
+
+
     Route::resource('guestbook', GuestbookController::class);
     // ->only(['index', 'store', 'edit', 'update', 'destroy']);
     Route::patch('/guestbook/{guestbook}/unpin', [GuestbookController::class, 'unpin'])->name('guestbook.unpin');

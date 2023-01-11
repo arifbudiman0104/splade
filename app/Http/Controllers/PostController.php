@@ -30,6 +30,36 @@ class PostController extends Controller
         // dd($posts);
         return view('posts', compact('posts'));
     }
+
+    // public function index()
+    // {
+    //     $posts = Post::where('is_published', true)
+    //         // ->with(['category'])
+    //         ->orderBy('published_at', 'desc')
+    //         ->paginate(10);
+    //     // dd($posts);
+    //     return view('posts', compact('posts'));
+    // }
+
+    // public function search()
+    // {
+    //     $search = request('search');
+    //     $posts = Post::where('is_published', true)
+    //         ->where(function ($query) use ($search) {
+    //             $query->where('title', 'like', '%' . $search . '%')
+    //                 ->orWhere('excerpt', 'like', '%' . $search . '%')
+    //                 ->orWhere('content', 'like', '%' . $search . '%');
+    //         })
+    //         // ->with(['category'])
+    //         ->orderBy('published_at', 'desc')
+    //         ->paginate(10)
+    //         ->withQueryString();
+    //     // dd($posts);
+    //     // dd($search);
+    //     // dd(request()->all());
+    //     return view('posts', compact('posts'));
+    // }
+
     public function home()
     {
         $featured = Post::where('is_published', true)

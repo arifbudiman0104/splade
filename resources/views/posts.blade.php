@@ -38,6 +38,13 @@
                                 <span class="sr-only">Search</span>
                             </button>
                         </form>
+                        {{-- <x-splade-form>
+                            <div class="relative w-full">
+                                <x-splade-input name="search" type="text"
+                                    placeholder="Search here ..." value="{{ old('search', request('search')) }}"
+                                    />
+                            </div>
+                        </x-splade-form> --}}
 
                         @forelse ( $posts as $post)
 
